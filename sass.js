@@ -1,19 +1,24 @@
 const prompt = require('prompt-sync')()
  let compt=1
+ let compt1=1
 const livres = [];
+const abonnes =[];
 function ajouterlivre(){
    
    let titre=prompt(" entrer le titre :");
    let auteure = prompt("entrer le nome de auteur :");
-   let  année = prompt("entrer lannée :");
-   let disponible= prompt("escqelle disponible o non ")
-    livres.push({id:compt++,titre,auteure,année,disponible:true})
+   let  année = prompt("entrer lannée : ");
+   let disponible= prompt("escqelle disponible oui ou non : ")
+    livres.push({id:compt++,titre,auteure,année,disponible})
 }
 
 function afficherLivres (){
-    livres.forEach(element => {
-        console.log("id",element.id,"titre:",element.titre,"auteure:",element.auteure,"année",element.année,"disponibilité",element.disponible?"oui":"non")
-    });
+   livres.forEach(element => {
+     console.log("id",element.id,"titre:",element.titre,"auteure:",element.auteure,"année",element.année,"disponibilité" ,element.disponible === "oui" ? "oui" : "non")
+   });
+  for (let i=0;i<livres.length;i++){
+    console.log(livres[i])
+  }
 }
 function traierlivres(){
     livres.sort(function (a,b){
@@ -48,6 +53,17 @@ function afecherparid(){
     }
 
 }
+function ajouterabonne(){
+    let nom = prompt("entrer votre nom : ")
+    let prenom = prompt("entrer votre prenom : ")
+    let email = prompt("entrer votre adresse email: ")
+    abonnes.push({id:compt1++,nom,prenom,email})
+
+}
+function affecherabonne(){
+        abonnes.forEach(a=>console.log("id: ",a.id,"nom: ",a.nom,"prenom: ",a.prenom,"email: ",a.email))
+
+} 
 
 
 let choix ;
@@ -59,9 +75,10 @@ function menu(){
         console.log("2.affecher tout les livres .")
         console.log("3.traire les livres par titre .")
         console.log("4.traire les livre par année.")
-        console.log("5.afecher les livres disponible ")
-        console.log("6.recherche par id ")
-
+        console.log("5.afecher les livres disponible. ")
+        console.log("6.recherche par id. ")
+        console.log("7.ajouter un abonne. ")
+        console.log("8.affecher les abbonne. ")
         choix=prompt("entrer un choix :")
         switch (choix){
             case "1" :ajouterlivre();break
@@ -71,6 +88,8 @@ function menu(){
             case "5" :afficherdispo();break
             case "5" :afficherdispo();break
             case "6" :afecherparid();break
+            case "7" :ajouterabonne();break
+            case "8" :affecherabonne();break
         } 
         
 
